@@ -1,7 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import CommentList from "../CommentList";
+import CommentForm from "../CommentForm";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({
+  slug,
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  comments,
+  addComment,
+}) {
   return (
     <>
       <Link href="/gallery">← Gallery</Link>
@@ -10,6 +21,8 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
       <p>Artist: {artist}</p>
       <p>Year: {year}</p>
       <p>Genre: {genre}</p>
+      <CommentForm slug={slug} onAddComment={addComment} />
+      <CommentList comments={comments} />
     </>
   );
 }

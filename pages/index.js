@@ -1,3 +1,4 @@
+import Navigation from "@/components/Navigation";
 import Spotlight from "@/components/spotlight";
 
 export default function HomePage({ data }) {

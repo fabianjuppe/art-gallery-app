@@ -1,5 +1,6 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
+import Navigation from "@/components/Navigation";
 
 async function fetcher(url) {
   const response = await fetch(url);
@@ -26,7 +27,8 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} data = {data} />
+      <Component {...pageProps} data={data} />
+      <Navigation />
     </>
   );
 }

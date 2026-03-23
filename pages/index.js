@@ -1,4 +1,4 @@
-import Spotlight from "@/components/Spotlight";
+import Spotlight from "../components/Spotlight/index.js";
 
 export default function HomePage({ data }) {
   return (

@@ -1,5 +1,4 @@
-import Navigation from "@/components/Navigation";
-import Spotlight from "@/components/spotlight";
+import Spotlight from "@/components/Spotlight";
 
 export default function HomePage({ data }) {
   return (

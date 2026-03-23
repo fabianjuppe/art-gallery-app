@@ -1,6 +1,7 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Navigation from "@/components/Navigation";
+import { useEffect, useState } from "react";
 
 async function fetcher(url) {
   const response = await fetch(url);
@@ -19,15 +20,20 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
-  console.log(data);
+  const [artPieces, setArtPieces] = useState([]);
+  useEffect(() => {
+    if (data && artPieces.length === 0) {
+      setArtPieces(data);
+    }
+  }, [data, artPieces.length]);
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading && artPieces.length === 0) return <div>Loading...</div>;
 
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} data={data} />
+      <Component {...pageProps} data={artPieces} />
       <Navigation />
     </>
   );

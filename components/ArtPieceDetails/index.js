@@ -3,6 +3,7 @@ import Link from "next/link";
 import CommentList from "../CommentList";
 import CommentForm from "../CommentForm";
 import ColorPalette from "../ColorPalette";
+import FavButton from "../FavButtons";
 
 export default function ArtPieceDetails({
   slug,
@@ -13,7 +14,9 @@ export default function ArtPieceDetails({
   genre,
   colors,
   comments,
-  addComment,
+  addComment, 
+  toggleFavorite,
+  isFavorite,
 }) {
   return (
     <>
@@ -23,6 +26,7 @@ export default function ArtPieceDetails({
       <p>Artist: {artist}</p>
       <p>Year: {year}</p>
       <p>Genre: {genre}</p>
+      <FavButton onClick={() => toggleFavorite(slug)} isFavorite={isFavorite} />
       <CommentForm slug={slug} onAddComment={addComment} />
       <CommentList comments={comments} />
       <ColorPalette colors={colors} />

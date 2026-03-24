@@ -11,7 +11,7 @@ export default function Navigation() {
           <Link href="/">Spotlight</Link>
         </li>
         <li>
-          <Link href="/favorits">Favoriten</Link>
+          <Link href="/favorites">Favoriten</Link>
         </li>
       </ul>
     </>

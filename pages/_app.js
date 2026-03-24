@@ -39,6 +39,21 @@ export default function App({ Component, pageProps }) {
     }
   }, [data, artPieces.length]);
 
+  function addComment(slug, newComment) {
+    setArtPieces(
+      artPieces.map((artPiece) =>
+        artPiece.slug === slug
+          ? {
+              ...artPiece,
+              comments: artPiece.comments
+                ? [newComment, ...artPiece.comments]
+                : [newComment],
+            }
+          : artPiece
+      )
+    );
+  }
+
   if (error) return <div>failed to load</div>;
   if (isLoading && artPieces.length === 0) return <div>Loading...</div>;
 
@@ -50,6 +65,7 @@ export default function App({ Component, pageProps }) {
         data={artPieces}
         setArtPieces={setArtPieces}
         toggleFavorite={toggleFavorite}
+        addComment={addComment}
       />
       <Navigation />
     </>

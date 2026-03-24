@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CommentList from "../CommentList";
 import CommentForm from "../CommentForm";
+import ColorPalette from "../ColorPalette";
 
 export default function ArtPieceDetails({
   slug,
@@ -10,6 +11,7 @@ export default function ArtPieceDetails({
   artist,
   year,
   genre,
+  colors,
   comments,
   addComment,
 }) {
@@ -23,6 +25,7 @@ export default function ArtPieceDetails({
       <p>Genre: {genre}</p>
       <CommentForm slug={slug} onAddComment={addComment} />
       <CommentList comments={comments} />
+      <ColorPalette colors={colors} />
     </>
   );
 }

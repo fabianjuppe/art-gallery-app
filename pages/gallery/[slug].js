@@ -18,6 +18,7 @@ export default function ArtPieceDetailsPage({ data, addComment }) {
       artist={artPiece.artist}
       year={artPiece.year}
       genre={artPiece.genre}
+      colors={artPiece.colors}
       comments={artPiece.comments}
       addComment={addComment}
     />

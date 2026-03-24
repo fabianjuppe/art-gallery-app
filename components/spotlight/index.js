@@ -5,13 +5,14 @@ export default function Spotlight({ data }) {
     return <p>Loading...</p>;
   }
 
+  // TODO: Link zu ArtPieceDetails
   const randomArtPiece = data[Math.floor(Math.random() * data.length)];
   return (
     <>
       <li>
         <Image
           src={randomArtPiece.imageSource}
-          // dimensionen noch anpassen
+          // TODO: dimensionen noch anpassen (aus API auslesen)
           width={500}
           height={500}
           alt={randomArtPiece.name}

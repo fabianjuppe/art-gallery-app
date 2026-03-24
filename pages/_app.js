@@ -1,7 +1,7 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Navigation from "@/components/Navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {
@@ -57,7 +57,9 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  // TODO: Bessere Error Message
   if (error) return <div>failed to load</div>;
+  // TODO: Loading animation
   if (isLoading && artPieces.length === 0) return <div>Loading...</div>;
 
   return (

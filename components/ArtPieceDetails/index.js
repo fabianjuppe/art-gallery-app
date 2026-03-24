@@ -22,6 +22,7 @@ export default function ArtPieceDetails({
     <>
       <Link href="/gallery">← Gallery</Link>
       <h2>{title}</h2>
+      {/* TODO: dimensionen noch anpassen (aus API auslesen) */}
       <Image src={image} alt={title} width={192} height={256} />
       <p>Artist: {artist}</p>
       <p>Year: {year}</p>

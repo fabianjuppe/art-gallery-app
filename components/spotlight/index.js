@@ -1,12 +1,18 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Spotlight({ data }) {
-  if (!data || data.length === 0) {
-    return <p>Loading...</p>;
-  }
+  const [randomArtPiece, setRandomArtPiece] = useState();
+
+  useEffect(() => {
+    if (!data || data.length === 0) return;
+
+    setRandomArtPiece(data[Math.floor(Math.random() * data.length)]);
+  }, [data]);
+
+  if (!randomArtPiece) return <p>Loading...</p>;
 
   // TODO: Link zu ArtPieceDetails
-  const randomArtPiece = data[Math.floor(Math.random() * data.length)];
   return (
     <>
       <li>

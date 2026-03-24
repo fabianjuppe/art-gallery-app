@@ -24,12 +24,13 @@ export default function App({ Component, pageProps }) {
   const [artPieces, setArtPieces] = useLocalStorageState("art-pieces", {
     defaultValue: [],
   });
+
   useEffect(() => {
     if (data && artPieces.length === 0) {
       // Für jedes Objekt im data-Array dieses Objekt wiedergeben + isFavorite: false als key und Wert hinzufügen
       setArtPieces(data.map((art) => ({ ...art, isFavorite: false })));
     }
-  }, [data, artPieces.length]);
+  }, [data, artPieces.length, setArtPieces]);
 
   // Toggle Funktion für Fav Button
   function toggleFavorite(slug) {

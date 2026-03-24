@@ -14,7 +14,7 @@ export default function ArtPieceDetails({
   genre,
   colors,
   comments,
-  addComment, 
+  addComment,
   toggleFavorite,
   isFavorite,
 }) {

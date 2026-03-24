@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Navigation from "@/components/Navigation";
 import { useEffect, useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {
   const response = await fetch(url);
@@ -20,6 +21,16 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
+  const [artPieces, setArtPieces] = useLocalStorageState("art-pieces", {
+    defaultValue: [],
+  });
+  useEffect(() => {
+    if (data && artPieces.length === 0) {
+      // Für jedes Objekt im data-Array dieses Objekt wiedergeben + isFavorite: false als key und Wert hinzufügen
+      setArtPieces(data.map((art) => ({ ...art, isFavorite: false })));
+    }
+  }, [data, artPieces.length]);
+
   // Toggle Funktion für Fav Button
   function toggleFavorite(slug) {
     setArtPieces(
@@ -30,14 +41,6 @@ export default function App({ Component, pageProps }) {
       )
     );
   }
-
-  const [artPieces, setArtPieces] = useState([]);
-  useEffect(() => {
-    if (data && artPieces.length === 0) {
-      // Für jedes Objekt im data-Array dieses Objekt wiedergeben + isFavorite: false als key und Wert hinzufügen
-      setArtPieces(data.map((art) => ({ ...art, isFavorite: false })));
-    }
-  }, [data, artPieces.length]);
 
   function addComment(slug, newComment) {
     setArtPieces(

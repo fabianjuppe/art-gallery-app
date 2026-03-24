@@ -20,10 +20,22 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
+  // Toggle Funktion für Fav Button
+  function toggleFavorite(slug) {
+    setArtPieces(
+      artPieces.map((artPiece) =>
+        artPiece.slug === slug
+          ? { ...artPiece, isFavorite: !artPiece.isFavorite }
+          : artPiece
+      )
+    );
+  }
+
   const [artPieces, setArtPieces] = useState([]);
   useEffect(() => {
     if (data && artPieces.length === 0) {
-      setArtPieces(data);
+      // Für jedes Objekt im data-Array dieses Objekt wiedergeben + isFavorite: false als key und Wert hinzufügen
+      setArtPieces(data.map((art) => ({ ...art, isFavorite: false })));
     }
   }, [data, artPieces.length]);
 
@@ -33,7 +45,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} data={artPieces} />
+      <Component
+        {...pageProps}
+        data={artPieces}
+        setArtPieces={setArtPieces}
+        toggleFavorite={toggleFavorite}
+      />
       <Navigation />
     </>
   );

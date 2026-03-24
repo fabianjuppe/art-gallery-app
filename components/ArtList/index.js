@@ -1,6 +1,6 @@
 import ArtPreview from "../ArtPreview";
 
-export default function ArtList({ data }) {
+export default function ArtList({ data, toggleFavorite, isFavorite }) {
   return (
     <ul>
       {data.map((artPiece) => (
@@ -10,6 +10,8 @@ export default function ArtList({ data }) {
             image={artPiece.imageSource}
             title={artPiece.name}
             artist={artPiece.artist}
+            toggleFavorite={toggleFavorite}
+            isFavorite={artPiece.isFavorite}
           ></ArtPreview>
         </li>
       ))}

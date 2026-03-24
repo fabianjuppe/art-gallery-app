@@ -1,7 +1,7 @@
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 
-export default function ArtPieceDetailsPage({ data }) {
+export default function ArtPieceDetailsPage({ data, toggleFavorite }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -12,11 +12,14 @@ export default function ArtPieceDetailsPage({ data }) {
 
   return (
     <ArtPieceDetails
+      slug={artPiece.slug}
       image={artPiece.imageSource}
       title={artPiece.name}
       artist={artPiece.artist}
       year={artPiece.year}
       genre={artPiece.genre}
+      toggleFavorite={toggleFavorite}
+      isFavorite={artPiece.isFavorite}
     />
   );
 }

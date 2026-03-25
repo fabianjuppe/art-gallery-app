@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Heart from "/icons/herz.svg";
+import Heart from "/icons/Herz.svg";
 
 const StyledButton = styled.button`
   width: 2rem;

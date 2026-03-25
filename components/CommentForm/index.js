@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
-import Send from "/icons/send.svg";
+import Send from "/icons/Send.svg";
 
 const StyledForm = styled.form`
   display: flex;

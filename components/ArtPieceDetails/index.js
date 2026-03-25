@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Back from "/icons/back.svg";
+import Back from "/icons/Back.svg";
 import Link from "next/link";
 import CommentList from "../CommentList";
 import CommentForm from "../CommentForm";

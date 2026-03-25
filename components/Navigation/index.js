@@ -12,12 +12,13 @@ const StyledList = styled.ul`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #8c8c8c;
-  color: ${({ $isActive }) => ($isActive ? "#000000" : "#8c8c8c")};
+  color: var(--color-secondary);
+  color: ${({ $isActive }) =>
+    $isActive ? "var(--color-black)" : "var(--color-secondary)"};
   font-size: 2rem;
 
   &:hover {
-    color: #000000;
+    color: var(--color-black);
   }
 `;
 
@@ -25,7 +26,7 @@ const StyledNav = styled.nav`
   position: fixed;
   bottom: 3rem;
   width: 100%;
-  background-color: #ffffff;
+  background-color: var(--color-white);
 `;
 
 export default function Navigation() {

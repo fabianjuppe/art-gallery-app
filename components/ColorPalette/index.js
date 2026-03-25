@@ -1,14 +1,26 @@
+import styled from "styled-components";
+
+const StyledList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 1rem;
+`;
+
+const StyledDiv = styled.div`
+  width: 50px;
+  height: 50px;
+`;
+
 export default function ColorPalette({ colors }) {
   return (
-    <>
-      <h3>Color Palette:</h3>
-      <ul>
-        {colors.map((color) => (
-          <li key={color}>
-            <div style={{ backgroundColor: color }}>{color}</div>
-          </li>
-        ))}
-      </ul>
-    </>
+    <StyledList>
+      {colors.map((color) => (
+        <li key={color}>
+          <StyledDiv style={{ backgroundColor: color }}></StyledDiv>
+        </li>
+      ))}
+    </StyledList>
   );
 }

@@ -1,25 +1,37 @@
 import ArtPreview from "@/components/ArtPreview";
+import styled from "styled-components";
+
+const StyledList = styled.ul`
+  list-style: none;
+`;
+
+const StyledInfo = styled.h2`
+  text-align: center;
+  color: var(--color-secondary);
+`;
 
 export default function Favorites({ data, toggleFavorite }) {
   const favorites = data.filter((artPiece) => artPiece.isFavorite);
 
-  return (
-    <div>
-      <h1>Favorites</h1>
-      {/* Falls nichts geliked ist */}
-      {favorites.length === 0 && <p>Nocht keine Favoriten, like etwas!</p>}
+  if (favorites.length === 0) {
+    return <StyledInfo>No favorite art pieces saved yet!</StyledInfo>;
+  }
 
+  return (
+    <StyledList>
       {favorites.map((artPiece) => (
-        <ArtPreview
-          key={artPiece.slug}
-          slug={artPiece.slug}
-          image={artPiece.imageSource}
-          title={artPiece.name}
-          artist={artPiece.artist}
-          toggleFavorite={toggleFavorite}
-          isFavorite={artPiece.isFavorite}
-        />
+        <li key={artPiece.slug}>
+          <ArtPreview
+            slug={artPiece.slug}
+            image={artPiece.imageSource}
+            dimensions={artPiece.dimensions}
+            title={artPiece.name}
+            artist={artPiece.artist}
+            toggleFavorite={toggleFavorite}
+            isFavorite={artPiece.isFavorite}
+          />
+        </li>
       ))}
-    </div>
+    </StyledList>
   );
 }

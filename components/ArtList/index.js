@@ -1,13 +1,19 @@
 import ArtPreview from "../ArtPreview";
+import styled from "styled-components";
+
+const StyledList = styled.ul`
+  list-style: none;
+`;
 
 export default function ArtList({ data, toggleFavorite }) {
   return (
-    <ul>
+    <StyledList>
       {data.map((artPiece) => (
         <li key={artPiece.slug}>
           <ArtPreview
             slug={artPiece.slug}
             image={artPiece.imageSource}
+            dimensions={artPiece.dimensions}
             title={artPiece.name}
             artist={artPiece.artist}
             toggleFavorite={toggleFavorite}
@@ -15,6 +21,6 @@ export default function ArtList({ data, toggleFavorite }) {
           ></ArtPreview>
         </li>
       ))}
-    </ul>
+    </StyledList>
   );
 }

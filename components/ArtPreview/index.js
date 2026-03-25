@@ -1,25 +1,74 @@
 import Image from "next/image";
 import Link from "next/link";
 import FavButton from "../FavButtons";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+  background-color: ${(props) =>
+    props.$isFavorite ? "var(--color-secondary)" : "var(--color-primary)"};
+  color: ${(props) =>
+    props.$isFavorite ? "var(--color-primary)" : "var(--color-white)"};
+  display: flex;
+  gap: 2rem;
+  margin: 3rem 3rem 0 0;
+`;
+
+const Title = styled.p`
+  margin-left: 1rem;
+  font-weight: bold;
+`;
+
+const StyledLink = styled(Link)`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: fit-content;
+  margin: 0 auto;
+
+  &:hover {
+    opacity: 60%;
+  }
+`;
+
+const StyledImage = styled(Image)`
+  width: 100%;
+  height: auto;
+  max-width: 1000px;
+  max-height: 1000px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+`;
 
 export default function ArtPreview({
   slug,
   image,
+  dimensions,
   title,
   artist,
   toggleFavorite,
   isFavorite,
 }) {
   return (
-    <div>
-      <Link href={`/gallery/${slug}`}>
-        <h2>{title}</h2>
-        {/* TODO: dimensionen noch anpassen (aus API auslesen) */}
-        <Image src={image} alt={title} width={192} height={256} />
-        <p>Artist: {artist}</p>
-      </Link>
-      {/* TODO: FavButton ins Bild integrieren */}
-      <FavButton onClick={() => toggleFavorite(slug)} isFavorite={isFavorite} />
-    </div>
+    <>
+      <StyledDiv $isFavorite={isFavorite}>
+        <Title>{title}</Title>
+        <p>{artist}</p>
+        <FavButton
+          onClick={() => toggleFavorite(slug)}
+          isFavorite={isFavorite}
+        />
+      </StyledDiv>
+
+      <StyledLink href={`/gallery/${slug}`}>
+        <StyledImage
+          src={image}
+          alt={title}
+          width={dimensions.width}
+          height={dimensions.height}
+        />
+      </StyledLink>
+    </>
   );
 }

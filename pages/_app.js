@@ -58,10 +58,10 @@ export default function App({ Component, pageProps }) {
     );
   }
 
-  // TODO: Bessere Error Message
-  if (error) return <div>failed to load</div>;
-  // TODO: Loading animation
-  if (isLoading && artPieces.length === 0) return <div>Loading...</div>;
+  if (error) return <div>ERROR</div>;
+  if (isLoading && artPieces.length === 0) return <></>;
+
+  console.log(artPieces);
 
   return (
     <>

@@ -55,10 +55,6 @@ export default function Spotlight({ data }) {
       <StyledDiv>
         <Title>{randomArtPiece.name}</Title>
         <p>{randomArtPiece.artist}</p>
-        <FavButton
-          onClick={() => toggleFavorite(randomArtPiece.slug)}
-          isFavorite={randomArtPiece.isFavorite}
-        />
       </StyledDiv>
 
       <StyledLink href={`/gallery/${randomArtPiece.slug}`}>

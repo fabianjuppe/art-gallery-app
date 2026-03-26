@@ -8,9 +8,10 @@ const StyledList = styled.ul`
   padding: 1rem;
 `;
 
-const StyledDiv = styled.div`
+const StyledColor = styled.div`
   width: 50px;
   height: 50px;
+  background-color: ${({ $color }) => $color};
 `;
 
 export default function ColorPalette({ colors }) {
@@ -18,7 +19,7 @@ export default function ColorPalette({ colors }) {
     <StyledList>
       {colors.map((color) => (
         <li key={color}>
-          <StyledDiv style={{ backgroundColor: color }}></StyledDiv>
+          <StyledColor $color={color} />
         </li>
       ))}
     </StyledList>

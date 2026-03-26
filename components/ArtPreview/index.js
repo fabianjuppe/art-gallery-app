@@ -3,11 +3,11 @@ import Link from "next/link";
 import FavButton from "../FavButtons";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
-  background-color: ${(props) =>
-    props.$isFavorite ? "var(--color-secondary)" : "var(--color-primary)"};
-  color: ${(props) =>
-    props.$isFavorite ? "var(--color-primary)" : "var(--color-white)"};
+const TextContainer = styled.div`
+  background-color: ${({$isFavorite}) =>
+    $isFavorite ? "var(--color-secondary)" : "var(--color-primary)"};
+  color: ${({$isFavorite}) =>
+    $isFavorite ? "var(--color-primary)" : "var(--color-white)"};
   display: flex;
   gap: 2rem;
   margin: 3rem 3rem 0 0;
@@ -52,14 +52,14 @@ export default function ArtPreview({
 }) {
   return (
     <>
-      <StyledDiv $isFavorite={isFavorite}>
+      <TextContainer $isFavorite={isFavorite}>
         <Title>{title}</Title>
         <p>{artist}</p>
         <FavButton
           onClick={() => toggleFavorite(slug)}
           isFavorite={isFavorite}
         />
-      </StyledDiv>
+      </TextContainer>
 
       <StyledLink href={`/gallery/${slug}`}>
         <StyledImage

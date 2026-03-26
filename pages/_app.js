@@ -27,12 +27,10 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     if (data && artPieces.length === 0) {
-      // Für jedes Objekt im data-Array dieses Objekt wiedergeben + isFavorite: false als key und Wert hinzufügen
       setArtPieces(data.map((art) => ({ ...art, isFavorite: false })));
     }
   }, [data, artPieces.length, setArtPieces]);
 
-  // Toggle Funktion für Fav Button
   function toggleFavorite(slug) {
     setArtPieces(
       artPieces.map((artPiece) =>
@@ -60,8 +58,6 @@ export default function App({ Component, pageProps }) {
 
   if (error) return <div>ERROR</div>;
   if (isLoading && artPieces.length === 0) return <></>;
-
-  console.log(artPieces);
 
   return (
     <>

@@ -2,12 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import FavButton from "../FavButtons";
 
-const StyledDiv = styled.div`
+const ArtPieceContainer = styled.div`
   display: flex;
   gap: 2rem;
-  color: #2f00ff;
+  color: var(--color-primary);
   justify-content: center;
 `;
 
@@ -52,10 +51,10 @@ export default function Spotlight({ data }) {
 
   return (
     <>
-      <StyledDiv>
+      <ArtPieceContainer>
         <Title>{randomArtPiece.name}</Title>
         <p>{randomArtPiece.artist}</p>
-      </StyledDiv>
+      </ArtPieceContainer>
 
       <StyledLink href={`/gallery/${randomArtPiece.slug}`}>
         <StyledImage

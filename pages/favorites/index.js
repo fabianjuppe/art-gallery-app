@@ -5,7 +5,7 @@ const StyledList = styled.ul`
   list-style: none;
 `;
 
-const StyledInfo = styled.h2`
+const StyledInfo = styled.h1`
   text-align: center;
   color: var(--color-secondary);
 `;
